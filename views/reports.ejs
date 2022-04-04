@@ -1,0 +1,18 @@
+<%- include('./partials/header.ejs') %>
+<% if(reports.length == 0){ %>
+
+<div class="container" style="text-align: center; margin-top: 25px;">
+    <h1>There Are No Reports Right Now</h1>
+    <a class="btn btn-link" href="/absent">Create Now</a>
+</div>
+
+<% } else { reports.forEach(report => { %>
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title"><%= report.Group %></h5>
+          <p class="card-text"><%= report.Date %></p>
+          <a href="/reports/<%= report._id %>" class="btn btn-primary">Show Full Report</a>
+          <form action="/reports/delete/<%= report._id %>" method="post"><button type="submit" class="btn btn-danger">Delete Report</button>
+        </div>
+      </div>
+<% })} %>

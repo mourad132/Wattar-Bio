@@ -1,0 +1,16 @@
+<%- include('./partials/header.ejs') %>
+<% if(profiles.length == 0){ %>
+    <div class="container" style="text-align: center; margin-top: 25px;">
+        <h1>There Are No Profiles Right Now</h1>
+        <a class="btn btn-link" href="/new">Create Now</a>
+    </div>
+<% } else { profiles.forEach(profile => { %>
+
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title"><%= profile.name %></h5>
+      <form action="/delete/<%= profile._id %>" method="post"><button type="submit" style="margin-top: 10px !important; width: 100%;" class="btn btn-danger">Delete Report</button>
+    </div>
+</div>
+
+<% })} %>
